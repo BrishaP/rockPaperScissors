@@ -1,22 +1,3 @@
-Libraries/dependencies:
-- mediapipe : detect hands and fingers. determines this from data of joints from each finger. helps you see and count which finger is raised or not (rock would have no fingers displayed, paper would have all (?) and scissors 2)-tracks 3d hand landmarks. Does the machine learning stuff of indentifying hands and fingers.
-
--OpenCV-python : computer vision library- so I can use/access computer cam (mediapipe alone doesn't have built-in fucntionality for camera input) Can also draw on top to outlinw/highlight the joints and fingers on screen/display
-
-.Hands() has four default parameters
-
-1. static_ image mode, It tracks and detects, false means sometimes it detects and sometimes it tracks
-2. Max_min_hands
-3. min_detection_confidence
-4. mintracking_confidence
-
-steps:
-1) Use mediapipe/openCV :
--detect which hand landmarks would be rock, paper and scissors and store this
-
-
-2) Refactor old javascript rock-paper scissors app into python (random generated rock paper and scissors from computer, compare this to user, store the outcome and store the number of rounds played)
-
 //Change number input into rock paper or scissors
 //To simplify we are going to start off with numbers representing each item, but later on we will chnage this if we have time
 //1 = rock
@@ -110,31 +91,3 @@ playAgain = confirm(`You won: ${playerScore.playerWins} times. You drew ${player
 
 //Computer win half the time alternating
 //If it loses, then the computer will choose winning option next turn
-
-3) FUTURE:
--Can I turn this into an app?
--Can you play against other players instead of just computer
-
--SEPARATE PROJECT :Research the library capabilities, can I feed in scans of stained bone marrow samples and see if I can get a basic cell count? this already exists- but I want to see how this works, maybe have an analysis of home accurate it is depending on the staining and slide quality. 
-
-MVP1:
-
-//Need to find out how to access my laptop camera to my laptop (using open cv)
-
-//Use openCV for video processing, we need to access each frame from processing
-
-//give these frames to mediapipe
-
-MVP2:
-
-//Need to then use mediapipe hands detetection and landmark tracking 
-
-//Use OpenCV’s image display and drawing to show the hand landmarks 
-
-MVP3:
-
-//Use mediapipe hand and hand landmark tracking to determine how many fingers are being helld up and depending on this, we can assign the number of fingers being held up to whether a user is showing rock paper or scissors
-
-MVP4:
-
-//Refactor the old rock paper scissors code and just use basic functionality of determining what user is showing (rock paper or scissors)
