@@ -138,3 +138,97 @@ MVP3:
 MVP4:
 
 //Refactor the old rock paper scissors code and just use basic functionality of determining what user is showing (rock paper or scissors)
+
+
+MVP3: determining what user has chosen 
+THIS CONSIDERS THE Y COORDINATE OF THE FINGERTIP IN COMPARISON WITH THE Y CORRDINATE OF THE KNUCKLE 
+
+FOR ROCK:
+the finger tip coordinates need to be below the 'hand knuckle joints MCP landmarks: 5,9,13,17' (ignoring the thhumb)
+- get the word 'rock' to display on the screen and then countdown from 5 to 'confirm' the user has chosen rock
+-store this as user choice
+
+FOR PAPER:
+All finger tip landmark coordinates need to be above the knuckles (5,9,13,17 MCP) IGNORE THUMB
+-get the word paper to display on the screen and then countdown from 5 to confirm the user has chosen paper
+-store this as user choice
+
+FOR SCISSORS:
+only the 8 and 12 fingertips should be above the 5 and 9 MCP knuckles respectively, the 16 and 20 fingertips must be below the fingerknuckles. IGNORE THUMBS
+-get the word scissors to display on the screen and then countdown from 5 to confirm the user has chosen scissors
+-store this as user choice
+
+mvp 4: 
+Do the last bit where user and computer result is compared
+
+mvp5:
+determine the result
+
+Store the result
+
+Store the number of rounds
+
+thumbs up if you want to play again
+thumbs down if you don't want to play again
+
+DONE THE MAIN GAME ASPECT 
+
+
+FOR ROCK:
+
+
+
+(if the Y coordinates of 8 (fingertip)  are less than Landmark 5 Y coordinates then=true
+
+&&
+
+if the Y coordinates of 12 (fingertip) are less than landmark 9 Y coordinates =true
+
+&&
+
+if the Y coordinates of 16 (fingertip) are less than landmark  13 y coordinates = true 
+
+&&
+
+if the Y coordinates of 20 (fingertip) are less than landmark 17 Y coordinates = true)
+
+SO FAR ONLY STICK TO THE LEFT HAND, WE CAN INCORPORATE THE RIGHT HAND LATER ON
+
+Structure of hand_landmarks
+hand_landmarks is a NormalizedLandmarkList object.
+Each element in hand_landmarks.landmark is a NormalizedLandmark object.
+Each NormalizedLandmark object has the following attributes:
+x: The normalized x-coordinate (ranging from 0 to 1).
+y: The normalized y-coordinate (ranging from 0 to 1).
+z: The normalized z-coordinate (ranging from 0 to 1).
+
+for hand_landmarks in results.multi_hand_landmarks:
+    RING_FINGER_TIP_Y = hand_landmarks.landmark[16].y
+    RING_FINGER_MCP_Y = hand_landmarks.landmark[13].y
+
+    PINKY_TIP_Y = hand_landmarks.landmark[20].y
+    PINKY_MCP_Y = hand_landmarks.landmark[17].y
+
+    MIDDLE_FINGER_TIP_Y = hand_landmarks.landmark[12].y
+    MIDDLE_FINGER_MCP_Y = hand_landmarks.landmark[9].y
+
+    INDEX_FINGER_TIP_Y = hand_landmarks.landmark[8].y
+    INDEX_FINGER_MCP_Y = hand_landmarks.landmark[5].y
+
+if PINKY_TIP_Y < PINKY_MCP_Y and \
+   RING_FINGER_TIP_Y < RING_FINGER_MCP_Y and \
+   MIDDLE_FINGER_TIP_Y < MIDDLE_FINGER_MCP_Y and \
+   INDEX_FINGER_TIP_Y < INDEX_FINGER_MCP_Y:
+    userChoice = "ROCK"
+
+if PINKY_TIP_Y > PINKY_MCP_Y and \
+   RING_FINGER_TIP_Y > RING_FINGER_MCP_Y and \
+   MIDDLE_FINGER_TIP_Y > MIDDLE_FINGER_MCP_Y and \
+   INDEX_FINGER_TIP_Y > INDEX_FINGER_MCP_Y:
+    userChoice = "PAPER"
+
+    if PINKY_TIP_Y < PINKY_MCP_Y and \
+   RING_FINGER_TIP_Y < RING_FINGER_MCP_Y and \
+   MIDDLE_FINGER_TIP_Y > MIDDLE_FINGER_MCP_Y and \
+   INDEX_FINGER_TIP_Y > INDEX_FINGER_MCP_Y:
+    userChoice = "SCISSORS"
